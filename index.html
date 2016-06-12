@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Number Game</title>
+		<script src="JSlib.js"></script>
+		<script src="game.js"></script>
+	</head>
+	<body onload="start()">
+		<div id="BANNER"></div>
+		<div id="CONTENT">
+			<center>
+				<strong><font size=10><div id="target"></div></font></strong>
+				<br>
+				<font size = 8><div id="displayNumbers"></div></font>
+				<br><br>
+				<form>
+                    Answer:
+                    <input type="text" id="answerInput"><br>
+                    <input type="button" onclick="check()" value="Submit">
+                </form>
+				<br><br><br>
+				<img src="restart.jpg" onclick="refreshPage();" style="cursor: pointer; height: 100px; width: 100px">
+			</center>
+		</div>
+		<div id="FOOTER"></div>
+	</body>
+<html>
