@@ -44,7 +44,7 @@ function check() {
 	var correctNumbers = 0;
 	legit = (eval(input) === goal) && !(input == goal);
 	input += "+1";
-	if (!legit) { return; }
+	if (!legit) { alert("incorrect");return; }
 	var lastIndex = 0;
 	for (var x = 0; x < input.length; x++) {
 		if (input[x] !== "1" || input[x] !== "2" || input[x] !== "3" || input[x] !== "4" || input[x] !== "5" || input[x] !== "6" || input[x] !== "7" || input[x] !== "8" || input[x] !== "9" || input[x] !== "0") {
@@ -56,18 +56,6 @@ function check() {
 			x++;
 		}
 	}
-    
-    for (var x = 0; x < 6; x++){
-        if (numbersUsed.amountOf(numbersUsed[x]) > final_numbers.amountOf(numbersUsed[x])) {
-            alert("You have used " + final_numbers[x] + " more than once");
-            return;
-        }
-    }
-    
-    if (numbersUsed.length > 7) {
-        alert("Too many numbers used!");
-        return;
-    }
     for(var x = 0;x < numbersUsed.length; x++){
         correctNumbers=0;
         for(var y = 0;y < 6; y++){
@@ -79,8 +67,15 @@ function check() {
             
         }
     }
-	alert(numbersUsed.join(","));
-    console.log(numbersUsed.join(","));
+    for (var x = 0; x < numbersUsed.length; x++){
+        if (numbersUsed.amountOf(numbersUsed[x]) > final_numbers.amountOf(numbersUsed[x])) {
+            alert("You have used " + numbersUsed[x] + " more than allowed");
+            alert(numbersUsed.amountOf(numbersUsed[x]));
+            alert(final_numbers.amountOf(numbersUsed[x]));
+            return;
+        }
+    }
+
 	if (legit) { alert("Correct!"); }
     if (!legit) {alert("Does not equal target!");}
 }
