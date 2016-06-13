@@ -38,40 +38,33 @@ function start() {
 function check() {
 	var input = document.getElementById("answerInput").value.replace(/\[`\=\q\w\e\r\t\y\u\i\o\p\[\]\\\a\s\d\f\g\h\j\k\l\;\'\z\x\c\v\b\n\m\,\.\~\!\@\#\$\%\^\&\(\)\_\Q\W\E\R\T\Y\U\I\O\P\{\}\|\A\S\D\F\G\H\J\K\L\:\"\Z\X\C\V\B\N\M\<\>\?]/g, "");
 	var legit = true;
-    var insert = "";
-    var numbersUsed = [];
-    var double = "";
-    var correctNumbers = 0;
+	var insert = "";
+	var numbersUsed = [];
+	var double = "";
+	var correctNumbers = 0;
 	legit = (eval(input) === goal) && !(input == goal);
-    input += "+1";
+	input += "+1";
 	if (!legit) { return; }
 	var lastIndex = 0;
 	for (var x = 0; x < input.length; x++) {
-        if(input[x] !== "1" || input[x] !== "2" || input[x] !== "3" || input[x] !== "4" || input[x] !== "5" || input[x] !== "6" || input[x] !== "7" || input[x] !== "8" || input[x] !== "9" || input[x] !== "0"){
-            if(insert!=""){numbersUsed.push(insert);}
-            
-            insert="";
-            
-        }
-		/*if (input.charAt(x)!="1" || input.charAt(x)!="2" || input.charAt(x)!="3" || input.charAt(x)!="4" || input.charAt(x)!="5" || input.charAt(x)!="6" || input.charAt(x)!="7" || input.charAt(x)!="8" || input.charAt(x)!="9" || input.charAt(x)!="0" ) {
-			numbersUsed.push(input.slice(lastIndex, x));
-			lastIndex = x;
-		}*/
-        while(input[x] === "1" || input[x] === "2" || input[x] === "3" || input[x] === "4" || input[x] === "5" || input[x] === "6" || input[x] === "7" || input[x] === "8" || input[x] === "9" || input[x] === "0"){
-            
-            insert+=input[x];
-            x++
-        }
+		if (input[x] !== "1" || input[x] !== "2" || input[x] !== "3" || input[x] !== "4" || input[x] !== "5" || input[x] !== "6" || input[x] !== "7" || input[x] !== "8" || input[x] !== "9" || input[x] !== "0") {
+			if (insert != "") { numbersUsed.push(insert); }
+			insert="";
+		}
+		while(input[x] === "1" || input[x] === "2" || input[x] === "3" || input[x] === "4" || input[x] === "5" || input[x] === "6" || input[x] === "7" || input[x] === "8" || input[x] === "9" || input[x] === "0") {
+			insert += input[x];
+			x++;
+		}
 	}
     
-    for(var x = 0;x < 6; x++){
-        if(numbersUsed.amountOf(eval(final_numbers[x]))>final_numbers.amountOf(final_numbers[x])){
-            alert("You have used"+final_numbers[x]+"more than once");
+    for (var x = 0; x < 6; x++){
+        if (numbersUsed.amountOf(numbersUsed[x]) > final_numbers.amountOf(numbersUsed[x])) {
+            alert("You have used " + final_numbers[x] + " more than once");
             return;
         }
     }
     
-    if(numbersUsed.length>7){
+    if (numbersUsed.length > 7) {
         alert("Too many numbers used!");
         return;
     }
